@@ -53,22 +53,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: ListView.builder(
                     itemCount: contents.length,
-                    itemBuilder: (context, index) {
-                      return ShoppingCard(
-                        screenHeight: screenHeight,
-                        screenWidth: screenWidth,
-                        orientation: orientation,
-                        index: index,
-                        increaseQuantity: () {
-                          increaseQuantity(index, orientation);
-                          setState(() {});
-                        },
-                        decreaseQuantity: () {
-                          decreaseQuantity(index);
-                          setState(() {});
-                        },
-                      );
-                    },
+                    itemBuilder: (context, index) => ShoppingCard(
+                      screenHeight: screenHeight,
+                      screenWidth: screenWidth,
+                      orientation: orientation,
+                      index: index,
+                      increaseQuantity: () {
+                        increaseQuantity(index, orientation);
+                        setState(() {});
+                      },
+                      decreaseQuantity: () {
+                        decreaseQuantity(index);
+                        setState(() {});
+                      },
+                    ),
                   ),
                 ),
                 HomeScreenBottomLayout(
