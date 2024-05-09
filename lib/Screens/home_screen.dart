@@ -102,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
     if (contents[index].quantity == 5) {
       showAlertDialog(index, orientation);
     }
-    return;
   }
 
   void showAlertDialog(int index, Orientation orientation) {
