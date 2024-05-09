@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late int totalPrice;
+
   @override
   void initState() {
     totalPrice = calculateTotalPrice();
@@ -39,8 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       "My Bag",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.w900, fontFamily: 'WorkSans'),
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w900,
+                          fontFamily: 'WorkSans'),
                     ),
                   ],
                 ),
@@ -85,24 +88,35 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  int calculateTotalPrice(){
+  int calculateTotalPrice() {
     totalPrice = 0;
-    for(CardData data in contents){
+    for (CardData data in contents) {
       totalPrice += data.dressPrice;
     }
     return totalPrice;
   }
 
-  void increaseQuantity(int index,Orientation orientation) {
+  void increaseQuantity(int index, Orientation orientation) {
     if (contents[index].quantity < 5) {
       contents[index].quantity = contents[index].quantity + 1;
       totalPrice += contents[index].dressPrice;
+      if (contents[index].quantity == 5) {
+        showAlertDialog(index, orientation);
+      }
       return;
     }
+    showAlertDialog(index, orientation);
+  }
+
+  void showAlertDialog(int index, Orientation orientation) {
     showDialog(
       context: context,
       builder: (context) {
-        return AppAlertDialog(title: "Congratulations!", content: "You have added 5 ${contents[index].dressName.toString()} in your bag!", orientation: orientation);
+        return AppAlertDialog(
+            title: "Congratulations!",
+            content:
+                "You have added 5 ${contents[index].dressName.toString()} in your bag!",
+            orientation: orientation);
       },
     );
   }
