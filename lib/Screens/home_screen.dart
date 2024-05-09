@@ -98,12 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
     if (contents[index].quantity < 5) {
       contents[index].quantity = contents[index].quantity + 1;
       totalPrice += contents[index].dressPrice;
-      if (contents[index].quantity == 5) {
-        showAlertDialog(index, orientation);
-      }
-      return;
     }
-    showAlertDialog(index, orientation);
+    if (contents[index].quantity == 5) {
+      showAlertDialog(index, orientation);
+    }
+    return;
   }
 
   void showAlertDialog(int index, Orientation orientation) {
