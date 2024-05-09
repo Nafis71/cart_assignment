@@ -97,15 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
     if (contents[index].quantity < 5) {
       contents[index].quantity = contents[index].quantity + 1;
       totalPrice += contents[index].dressPrice;
+      return;
     }
-    if (contents[index].quantity == 5) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AppAlertDialog(title: "Congratulations!", content: "You have added 5 ${contents[index].dressName.toString()} in your bag!", orientation: orientation);
-        },
-      );
-    }
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AppAlertDialog(title: "Congratulations!", content: "You have added 5 ${contents[index].dressName.toString()} in your bag!", orientation: orientation);
+      },
+    );
   }
 
   void decreaseQuantity(int index) {
