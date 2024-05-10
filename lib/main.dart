@@ -1,6 +1,7 @@
 import 'package:cart_assignment/Screens/home_screen.dart';
 import 'package:cart_assignment/Themes/appbar_style.dart';
 import 'package:cart_assignment/Themes/elevated_button_style.dart';
+import 'package:cart_assignment/scroll_behavior.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppbarStyle.getAppbarStyle(),
         elevatedButtonTheme: ElevatedButtonStyle.getElevatedButtonStyle(),
       ),
+      scrollBehavior: AppScrollBehaviour(),
     );
   }
 }
