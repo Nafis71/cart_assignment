@@ -1,6 +1,7 @@
 import 'package:cart_assignment/Models/card_data.dart';
 import 'package:cart_assignment/Widgets/app_alert_dialog.dart';
 import 'package:cart_assignment/Widgets/home_screen_bottom_layout.dart';
+import 'package:cart_assignment/Widgets/home_screen_title.dart';
 import 'package:cart_assignment/Widgets/shopping_card.dart';
 import 'package:flutter/material.dart';
 
@@ -28,60 +29,92 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
-      body: OrientationBuilder(
-        builder: (BuildContext context, Orientation orientation) {
-          return Container(
-            margin: const EdgeInsets.all(15.00),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Wrap(
-                  alignment: WrapAlignment.start,
-                  children: [
-                    Text(
-                      "My Bag",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w900,
-                          fontFamily: 'WorkSans'),
+      body: SafeArea(
+        child: OrientationBuilder(
+          builder: (BuildContext context, Orientation orientation) {
+            return (orientation == Orientation.portrait)
+                ? Container(
+                    margin: const EdgeInsets.all(15.00),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const HomeScreenTitle(),
+                        SizedBox(
+                          height:
+                              (orientation == Orientation.portrait) ? 25 : 5,
+                        ),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: contents.length,
+                            itemBuilder: (context, index) => ShoppingCard(
+                              screenHeight: screenHeight,
+                              screenWidth: screenWidth,
+                              orientation: orientation,
+                              index: index,
+                              increaseQuantity: () =>
+                                  increaseQuantity(index, orientation),
+                              decreaseQuantity: () => decreaseQuantity(index),
+                            ),
+                          ),
+                        ),
+                        HomeScreenBottomLayout(
+                          orientation: orientation,
+                          screenHeight: screenHeight,
+                          screenWidth: screenWidth,
+                          totalPrice: totalPrice,
+                          onPressed: () {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(showSnackBar());
+                          },
+                        )
+                      ],
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: (orientation == Orientation.portrait) ? 25 : 16,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: contents.length,
-                    itemBuilder: (context, index) => ShoppingCard(
-                      screenHeight: screenHeight,
-                      screenWidth: screenWidth,
-                      orientation: orientation,
-                      index: index,
-                      increaseQuantity: () {
-                        increaseQuantity(index, orientation);
-                        setState(() {});
-                      },
-                      decreaseQuantity: () {
-                        decreaseQuantity(index);
-                        setState(() {});
-                      },
+                  )
+                : Container(
+                    margin: const EdgeInsets.all(10.00),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Expanded(
+                                child: HomeScreenTitle()
+                              ),
+                              Expanded(
+                                flex: 6,
+                                child: ListView.builder(
+                                  itemCount: contents.length,
+                                  itemBuilder: (context, index) => ShoppingCard(
+                                    screenHeight: screenHeight,
+                                    screenWidth: screenWidth,
+                                    orientation: orientation,
+                                    index: index,
+                                    increaseQuantity: () =>
+                                        increaseQuantity(index, orientation),
+                                    decreaseQuantity: () =>
+                                        decreaseQuantity(index),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        HomeScreenBottomLayout(
+                          orientation: orientation,
+                          screenHeight: screenHeight,
+                          screenWidth: screenWidth,
+                          totalPrice: totalPrice,
+                          onPressed: () {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(showSnackBar());
+                          },
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-                HomeScreenBottomLayout(
-                  orientation: orientation,
-                  screenHeight: screenHeight,
-                  screenWidth: screenWidth,
-                  totalPrice: totalPrice,
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(showSnackBar());
-                  },
-                )
-              ],
-            ),
-          );
-        },
+                  );
+          },
+        ),
       ),
     );
   }
@@ -102,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (contents[index].quantity == 5) {
       showAlertDialog(index, orientation);
     }
+    setState(() {});
   }
 
   void showAlertDialog(int index, Orientation orientation) {
@@ -122,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
       contents[index].quantity = contents[index].quantity - 1;
       totalPrice -= contents[index].dressPrice;
     }
+    setState(() {});
   }
 
   SnackBar showSnackBar() {
