@@ -26,7 +26,7 @@ class ShoppingCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       height: (orientation == Orientation.portrait)
-          ? screenHeight * 0.15
+          ? screenHeight * 0.16
           : screenHeight * 0.4,
       width: screenWidth * 0.9,
       decoration: BoxDecoration(
@@ -131,7 +131,7 @@ class ShoppingCard extends StatelessWidget {
                         ? MediaQuery.of(context).size.height * 0.05
                         : MediaQuery.of(context).size.height * 0.16,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ShoppingCardQuantityButton(
                           icon: Icons.remove,
@@ -150,8 +150,10 @@ class ShoppingCard extends StatelessWidget {
                           onPressed: increaseQuantity,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Wrap(
+                              alignment: WrapAlignment.end,
                               children: [
                                 Text(
                                   "${contents[index].dressPrice * contents[index].quantity}\$",

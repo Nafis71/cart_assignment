@@ -29,92 +29,90 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
-      body: SafeArea(
-        child: OrientationBuilder(
-          builder: (BuildContext context, Orientation orientation) {
-            return (orientation == Orientation.portrait)
-                ? Container( //portraitView
-                    margin: const EdgeInsets.all(10.00),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const HomeScreenTitle(),
-                        SizedBox(
-                          height:
-                              (orientation == Orientation.portrait) ? 25 : 5,
+      body: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation) {
+          return (orientation == Orientation.portrait)
+              ? Container( //portraitView
+                  margin: const EdgeInsets.all(10.00),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const HomeScreenTitle(),
+                      SizedBox(
+                        height:
+                            (orientation == Orientation.portrait) ? 25 : 5,
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: contents.length,
+                          itemBuilder: (context, index) => ShoppingCard(
+                            screenHeight: screenHeight,
+                            screenWidth: screenWidth,
+                            orientation: orientation,
+                            index: index,
+                            increaseQuantity: () =>
+                                increaseQuantity(index, orientation),
+                            decreaseQuantity: () => decreaseQuantity(index),
+                          ),
                         ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: contents.length,
-                            itemBuilder: (context, index) => ShoppingCard(
-                              screenHeight: screenHeight,
-                              screenWidth: screenWidth,
-                              orientation: orientation,
-                              index: index,
-                              increaseQuantity: () =>
-                                  increaseQuantity(index, orientation),
-                              decreaseQuantity: () => decreaseQuantity(index),
+                      ),
+                      HomeScreenBottomLayout(
+                        orientation: orientation,
+                        screenHeight: screenHeight,
+                        screenWidth: screenWidth,
+                        totalPrice: totalPrice,
+                        onPressed: () {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(showSnackBar());
+                        },
+                      )
+                    ],
+                  ),
+                )
+              : Container( //landScape View
+                  margin: const EdgeInsets.all(10.00),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Expanded(
+                              child: HomeScreenTitle()
                             ),
-                          ),
-                        ),
-                        HomeScreenBottomLayout(
-                          orientation: orientation,
-                          screenHeight: screenHeight,
-                          screenWidth: screenWidth,
-                          totalPrice: totalPrice,
-                          onPressed: () {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(showSnackBar());
-                          },
-                        )
-                      ],
-                    ),
-                  )
-                : Container( //landScape View
-                    margin: const EdgeInsets.all(10.00),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            children: [
-                              const Expanded(
-                                child: HomeScreenTitle()
-                              ),
-                              Expanded(
-                                flex: 6,
-                                child: ListView.builder(
-                                  itemCount: contents.length,
-                                  itemBuilder: (context, index) => ShoppingCard(
-                                    screenHeight: screenHeight,
-                                    screenWidth: screenWidth,
-                                    orientation: orientation,
-                                    index: index,
-                                    increaseQuantity: () =>
-                                        increaseQuantity(index, orientation),
-                                    decreaseQuantity: () =>
-                                        decreaseQuantity(index),
-                                  ),
+                            Expanded(
+                              flex: 6,
+                              child: ListView.builder(
+                                itemCount: contents.length,
+                                itemBuilder: (context, index) => ShoppingCard(
+                                  screenHeight: screenHeight,
+                                  screenWidth: screenWidth,
+                                  orientation: orientation,
+                                  index: index,
+                                  increaseQuantity: () =>
+                                      increaseQuantity(index, orientation),
+                                  decreaseQuantity: () =>
+                                      decreaseQuantity(index),
                                 ),
-                              )
-                            ],
-                          ),
+                              ),
+                            )
+                          ],
                         ),
-                        HomeScreenBottomLayout(
-                          orientation: orientation,
-                          screenHeight: screenHeight,
-                          screenWidth: screenWidth,
-                          totalPrice: totalPrice,
-                          onPressed: () {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(showSnackBar());
-                          },
-                        ),
-                      ],
-                    ),
-                  );
-          },
-        ),
+                      ),
+                      HomeScreenBottomLayout(
+                        orientation: orientation,
+                        screenHeight: screenHeight,
+                        screenWidth: screenWidth,
+                        totalPrice: totalPrice,
+                        onPressed: () {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(showSnackBar());
+                        },
+                      ),
+                    ],
+                  ),
+                );
+        },
       ),
     );
   }
