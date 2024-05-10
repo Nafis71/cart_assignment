@@ -32,15 +32,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           return (orientation == Orientation.portrait)
-              ? Container( //portraitView
+              ? Container(
+                  //portraitView
                   margin: const EdgeInsets.all(10.00),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const HomeScreenTitle(),
                       SizedBox(
-                        height:
-                            (orientation == Orientation.portrait) ? 25 : 5,
+                        height: (orientation == Orientation.portrait) ? 25 : 5,
                       ),
                       Expanded(
                         child: ListView.builder(
@@ -69,7 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 )
-              : Container( //landScape View
+              : Container(
+                  //landScape View
                   margin: const EdgeInsets.all(10.00),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,9 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Expanded(
                         child: Row(
                           children: [
-                            const Expanded(
-                              child: HomeScreenTitle()
-                            ),
+                            const Expanded(child: HomeScreenTitle()),
                             Expanded(
                               flex: 6,
                               child: ListView.builder(
