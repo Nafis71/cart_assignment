@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (BuildContext context, Orientation orientation) {
             return (orientation == Orientation.portrait)
                 ? Container(
-                    margin: const EdgeInsets.all(15.00),
+                    margin: const EdgeInsets.all(10.00),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
