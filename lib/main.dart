@@ -4,7 +4,7 @@ import 'package:cart_assignment/Utils/scroll_behavior.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-import '../HomeScreen/home_screen_view.dart';
+import 'View/HomeScreen/home_screen_view.dart';
 
 void main() {
   runApp(DevicePreview(
