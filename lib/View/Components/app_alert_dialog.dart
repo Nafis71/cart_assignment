@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Themes/text_theme.dart';
+
 class AppAlertDialog extends StatelessWidget {
   final String title, content;
   final Orientation orientation;
@@ -17,13 +19,13 @@ class AppAlertDialog extends StatelessWidget {
       title: Center(
         child: Text(
           title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: "WorkSans"),
+          style: TextThemes.getTextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
       ),
       content: Text(
         content,
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 18, fontFamily: "WorkSans"),
+        style: TextThemes.getTextStyle(fontSize: 18),
       ),
       contentPadding: const EdgeInsets.all(40.00),
       actionsAlignment: MainAxisAlignment.center,

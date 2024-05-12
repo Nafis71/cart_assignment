@@ -1,12 +1,14 @@
-import 'package:cart_assignment/Screens/home_screen.dart';
 import 'package:cart_assignment/Themes/appbar_style.dart';
 import 'package:cart_assignment/Themes/elevated_button_style.dart';
-import 'package:cart_assignment/scroll_behavior.dart';
+import 'package:cart_assignment/Utils/scroll_behavior.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
+import '../HomeScreen/home_screen_view.dart';
+
 void main() {
-  runApp(DevicePreview(enabled:true,builder: (BuildContext context) => const MyApp()));
+  runApp(DevicePreview(
+      enabled: true, builder: (BuildContext context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +16,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-      home: const HomeScreen(),
+      home: const HomeScreenView(),
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF9F9F9),
         appBarTheme: AppbarStyle.getAppbarStyle(),
@@ -28,4 +30,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

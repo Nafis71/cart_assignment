@@ -1,8 +1,10 @@
-import 'package:cart_assignment/Widgets/shopping_card_labels.dart';
-import 'package:cart_assignment/Widgets/shopping_card_quantity_button.dart';
+import '../../Models/card_data.dart';
+
 import 'package:flutter/material.dart';
 
-import '../Models/card_data.dart';
+import '../../Themes/text_theme.dart';
+import '../Components/shopping_card_labels.dart';
+import '../Components/shopping_card_quantity_button.dart';
 
 class ShoppingCard extends StatelessWidget {
   final double screenHeight, screenWidth;
@@ -72,10 +74,9 @@ class ShoppingCard extends StatelessWidget {
                           Text(
                             contents[index].dressName,
                             style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "WorkSans"
-                            ),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "WorkSans"),
                           ),
                         ],
                       ),
@@ -137,11 +138,12 @@ class ShoppingCard extends StatelessWidget {
                           icon: Icons.remove,
                           onPressed: decreaseQuantity,
                         ),
-                         Wrap(
+                        Wrap(
                           children: [
                             Text(
                               contents[index].quantity.toString(),
-                              style: const TextStyle(fontSize: 17,fontFamily: "WorkSans"),
+                              style: const TextStyle(
+                                  fontSize: 17, fontFamily: "WorkSans"),
                             ),
                           ],
                         ),
@@ -157,10 +159,9 @@ class ShoppingCard extends StatelessWidget {
                               children: [
                                 Text(
                                   "${contents[index].dressPrice * contents[index].quantity}\$",
-                                  style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: "WorkSans",
+                                  style: TextThemes.getTextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15,
                                   ),
                                 ),
                               ],
