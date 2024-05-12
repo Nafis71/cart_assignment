@@ -2,6 +2,7 @@ import 'package:cart_assignment/Models/card_data.dart';
 import 'package:cart_assignment/View/Components/app_snackbar.dart';
 import 'package:cart_assignment/ViewModels/shopping_cart_controller.dart';
 import 'package:flutter/material.dart';
+import '../Components/app_alert_dialog.dart';
 import 'home_screen_bottom_layout.dart';
 import 'home_screen_shopping_card_layout.dart';
 import 'home_screen_title_layout.dart';
@@ -20,7 +21,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
   @override
   void initState() {
-    cartController = ShoppingCartController(context: context);
+    cartController = ShoppingCartController();
     totalPrice = cartController.calculateTotalPrice(contents);
     super.initState();
   }
@@ -132,12 +133,29 @@ class _HomeScreenViewState extends State<HomeScreenView> {
 
   void increaseQuantity(int index, Orientation orientation) {
     totalPrice =
-        cartController.increaseQuantity(totalPrice, index, orientation);
+        cartController.increaseQuantity(totalPrice, index);
+    if (contents[index].quantity == 5) {
+      showAlertDialog(index, orientation);
+    }
     setState(() {});
   }
 
   void decreaseQuantity(int index) {
     totalPrice = cartController.decreaseQuantity(totalPrice, index);
     setState(() {});
+  }
+
+  void showAlertDialog(int index, Orientation orientation) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AppAlertDialog(
+          title: "Congratulations!",
+          content:
+          "You have added \n5 ${contents[index].dressName.toString()}\n in your bag!",
+          orientation: orientation,
+        );
+      },
+    );
   }
 }
