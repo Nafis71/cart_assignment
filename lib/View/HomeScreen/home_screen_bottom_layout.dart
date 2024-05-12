@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Themes/text_theme.dart';
+
 class HomeScreenBottomLayout extends StatelessWidget {
   final Orientation orientation;
   final double screenHeight, screenWidth;
@@ -27,16 +29,11 @@ class HomeScreenBottomLayout extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Wrap(
+               Wrap(
                 children: [
                   Text(
                     "Total amount",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: "WorkSans",
-                    ),
+                    style: TextThemes.getTextStyle(fontWeight: FontWeight.w600,color: Colors.grey,fontSize: 16)
                   ),
                 ],
               ),
@@ -44,12 +41,7 @@ class HomeScreenBottomLayout extends StatelessWidget {
                 children: [
                   Text(
                     "${totalPrice.toString()}\$",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "WorkSans",
-                    ),
+                    style: TextThemes.getTextStyle(fontWeight: FontWeight.bold, fontSize: 18)
                   ),
                 ],
               ),
