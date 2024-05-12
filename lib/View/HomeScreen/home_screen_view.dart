@@ -6,7 +6,6 @@ import 'home_screen_bottom_layout.dart';
 import 'home_screen_shopping_card_layout.dart';
 import 'home_screen_title_layout.dart';
 
-
 class HomeScreenView extends StatefulWidget {
   const HomeScreenView({super.key});
 
@@ -44,7 +43,9 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     );
   }
 
-  Widget portraitView(Orientation orientation,) =>
+  Widget portraitView(
+    Orientation orientation,
+  ) =>
       Container(
         //portraitView
         margin: const EdgeInsets.all(10.00),
@@ -58,16 +59,14 @@ class _HomeScreenViewState extends State<HomeScreenView> {
             Expanded(
               child: ListView.builder(
                 itemCount: contents.length,
-                itemBuilder: (context, index) =>
-                    ShoppingCard(
-                      screenHeight: screenHeight,
-                      screenWidth: screenWidth,
-                      orientation: orientation,
-                      index: index,
-                      increaseQuantity: () =>
-                          increaseQuantity(index, orientation),
-                      decreaseQuantity: () => decreaseQuantity(index),
-                    ),
+                itemBuilder: (context, index) => ShoppingCard(
+                  screenHeight: screenHeight,
+                  screenWidth: screenWidth,
+                  orientation: orientation,
+                  index: index,
+                  increaseQuantity: () => increaseQuantity(index, orientation),
+                  decreaseQuantity: () => decreaseQuantity(index),
+                ),
               ),
             ),
             HomeScreenBottomLayout(
@@ -76,8 +75,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               screenWidth: screenWidth,
               totalPrice: totalPrice,
               onPressed: () {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
                     content: "Congratulations! Your purchase was a success!!"));
               },
             )
@@ -85,8 +83,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
         ),
       );
 
-  Widget landScapeView(Orientation orientation) =>
-      Container(
+  Widget landScapeView(Orientation orientation) => Container(
         //landScape View
         margin: const EdgeInsets.all(10.00),
         child: Column(
@@ -102,17 +99,15 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                     flex: 6,
                     child: ListView.builder(
                       itemCount: contents.length,
-                      itemBuilder: (context, index) =>
-                          ShoppingCard(
-                            screenHeight: screenHeight,
-                            screenWidth: screenWidth,
-                            orientation: orientation,
-                            index: index,
-                            increaseQuantity: () =>
-                                increaseQuantity(index, orientation),
-                            decreaseQuantity: () =>
-                                decreaseQuantity(index),
-                          ),
+                      itemBuilder: (context, index) => ShoppingCard(
+                        screenHeight: screenHeight,
+                        screenWidth: screenWidth,
+                        orientation: orientation,
+                        index: index,
+                        increaseQuantity: () =>
+                            increaseQuantity(index, orientation),
+                        decreaseQuantity: () => decreaseQuantity(index),
+                      ),
                     ),
                   )
                 ],
@@ -124,9 +119,11 @@ class _HomeScreenViewState extends State<HomeScreenView> {
               screenWidth: screenWidth,
               totalPrice: totalPrice,
               onPressed: () {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(showSnackBar(
-                    content: "Congratulations! Your purchase was a success!!"));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  showSnackBar(
+                      content:
+                          "Congratulations! Your purchase was a success!!"),
+                );
               },
             ),
           ],

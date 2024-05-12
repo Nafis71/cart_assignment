@@ -73,10 +73,10 @@ class ShoppingCard extends StatelessWidget {
                         children: [
                           Text(
                             contents[index].dressName,
-                            style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "WorkSans"),
+                            style: TextThemes.getTextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
@@ -142,8 +142,7 @@ class ShoppingCard extends StatelessWidget {
                           children: [
                             Text(
                               contents[index].quantity.toString(),
-                              style: const TextStyle(
-                                  fontSize: 17, fontFamily: "WorkSans"),
+                              style: TextThemes.getTextStyle(fontSize: 17),
                             ),
                           ],
                         ),

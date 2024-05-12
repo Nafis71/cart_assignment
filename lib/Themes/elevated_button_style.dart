@@ -1,3 +1,4 @@
+import 'package:cart_assignment/Themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class ElevatedButtonStyle{
@@ -7,8 +8,7 @@ class ElevatedButtonStyle{
       elevation: 5,
       shadowColor: Colors.red,
       foregroundColor: Colors.white,
-      textStyle: const TextStyle(
-          fontSize: 16, fontWeight: FontWeight.w400,fontFamily: "Worksans"),
+      textStyle: TextThemes.getTextStyle(fontSize: 16, fontWeight: FontWeight.w400),
     )
   );
 }
