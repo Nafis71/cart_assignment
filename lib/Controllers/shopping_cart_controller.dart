@@ -9,7 +9,7 @@ class ShoppingCartController {
     return totalPrice;
   }
 
-  int increaseQuantity(int totalPrice, int index) {
+  int increaseQuantity(int totalPrice, int index,List<CardData> contents ) {
     if (contents[index].quantity < 5) {
       contents[index].quantity++;
       totalPrice += contents[index].dressPrice;
@@ -17,7 +17,7 @@ class ShoppingCartController {
     return totalPrice;
   }
 
-  int decreaseQuantity(int totalPrice, int index) {
+  int decreaseQuantity(int totalPrice, int index, List<CardData> contents) {
     if (contents[index].quantity > 1) {
       contents[index].quantity--;
       totalPrice -= contents[index].dressPrice;

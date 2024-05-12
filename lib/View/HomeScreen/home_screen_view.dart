@@ -132,7 +132,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
       );
 
   void increaseQuantity(int index, Orientation orientation) {
-    totalPrice = cartController.increaseQuantity(totalPrice, index);
+    totalPrice = cartController.increaseQuantity(totalPrice, index,contents);
     if (contents[index].quantity == 5) {
       showAlertDialog(index, orientation);
     }
@@ -140,7 +140,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   }
 
   void decreaseQuantity(int index) {
-    totalPrice = cartController.decreaseQuantity(totalPrice, index);
+    totalPrice = cartController.decreaseQuantity(totalPrice, index,contents);
     setState(() {});
   }
 
