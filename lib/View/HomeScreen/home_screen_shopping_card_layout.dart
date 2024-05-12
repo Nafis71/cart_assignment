@@ -1,7 +1,5 @@
 import '../../Models/card_data.dart';
-
 import 'package:flutter/material.dart';
-
 import '../../Themes/text_theme.dart';
 import '../Components/shopping_card_labels.dart';
 import '../Components/shopping_card_quantity_button.dart';

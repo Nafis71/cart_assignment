@@ -24,4 +24,5 @@ class ShoppingCartController {
     }
     return totalPrice;
   }
+
 }

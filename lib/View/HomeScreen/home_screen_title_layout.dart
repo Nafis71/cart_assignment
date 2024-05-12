@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-
 import '../../Themes/text_theme.dart';
 
 class HomeScreenTitle extends StatelessWidget {
