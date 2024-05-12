@@ -4,7 +4,8 @@ class ShoppingCardQuantityButton extends StatelessWidget {
   final IconData icon;
   final Function onPressed;
 
-  const ShoppingCardQuantityButton({super.key, required this.icon, required this.onPressed});
+  const ShoppingCardQuantityButton(
+      {super.key, required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

@@ -10,9 +10,6 @@ class ShoppingCardLabels {
         style: TextThemes.getTextStyle(color: Colors.grey),
       );
     }
-    return Text(
-      text,
-      style: TextThemes.getTextStyle(color: Colors.black)
-    );
+    return Text(text, style: TextThemes.getTextStyle(color: Colors.black));
   }
 }

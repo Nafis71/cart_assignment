@@ -19,7 +19,8 @@ class AppAlertDialog extends StatelessWidget {
       title: Center(
         child: Text(
           title,
-          style: TextThemes.getTextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          style: TextThemes.getTextStyle(
+              fontWeight: FontWeight.bold, fontSize: 24),
         ),
       ),
       content: Text(

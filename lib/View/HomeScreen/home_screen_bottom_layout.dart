@@ -29,20 +29,20 @@ class HomeScreenBottomLayout extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-               Wrap(
+              Wrap(
                 children: [
-                  Text(
-                    "Total amount",
-                    style: TextThemes.getTextStyle(fontWeight: FontWeight.w600,color: Colors.grey,fontSize: 16)
-                  ),
+                  Text("Total amount",
+                      style: TextThemes.getTextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey,
+                          fontSize: 16)),
                 ],
               ),
               Wrap(
                 children: [
-                  Text(
-                    "${totalPrice.toString()}\$",
-                    style: TextThemes.getTextStyle(fontWeight: FontWeight.bold, fontSize: 18)
-                  ),
+                  Text("${totalPrice.toString()}\$",
+                      style: TextThemes.getTextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 18)),
                 ],
               ),
             ],

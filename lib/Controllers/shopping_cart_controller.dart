@@ -1,7 +1,6 @@
 import '../Models/card_data.dart';
 
 class ShoppingCartController {
-
   int calculateTotalPrice(List<CardData> contents) {
     int totalPrice = 0;
     for (CardData data in contents) {
