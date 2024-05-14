@@ -65,7 +65,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   screenWidth: screenWidth,
                   orientation: orientation,
                   index: index,
-                  increaseQuantity: () => increaseQuantity(index, orientation),
+                  increaseQuantity: () => increaseQuantity(index),
                   decreaseQuantity: () => decreaseQuantity(index),
                 ),
               ),
@@ -106,7 +106,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                         orientation: orientation,
                         index: index,
                         increaseQuantity: () =>
-                            increaseQuantity(index, orientation),
+                            increaseQuantity(index),
                         decreaseQuantity: () => decreaseQuantity(index),
                       ),
                     ),
@@ -131,10 +131,10 @@ class _HomeScreenViewState extends State<HomeScreenView> {
         ),
       );
 
-  void increaseQuantity(int index, Orientation orientation) {
+  void increaseQuantity(int index) {
     totalPrice = cartController.increaseQuantity(totalPrice, index,contents);
     if (contents[index].quantity == 5) {
-      showAlertDialog(index, orientation);
+      showAlertDialog(index);
     }
     setState(() {});
   }
@@ -144,16 +144,19 @@ class _HomeScreenViewState extends State<HomeScreenView> {
     setState(() {});
   }
 
-  void showAlertDialog(int index, Orientation orientation) {
+  void showAlertDialog(int index) {
     showDialog(
       context: context,
       builder: (context) {
-        return AppAlertDialog(
-          title: "Congratulations!",
-          content:
-              "You have added \n5 ${contents[index].dressName.toString()}\n in your bag!",
-          orientation: orientation,
-        );
+        return OrientationBuilder(builder: (BuildContext context, Orientation orientation) {
+          return AppAlertDialog(
+            title: "Congratulations!",
+            content:
+            "You have added \n5 ${contents[index].dressName.toString()}\n in your bag!",
+            orientation: orientation,
+          );
+        });
+
       },
     );
   }
